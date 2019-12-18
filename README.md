@@ -1,4 +1,25 @@
-# Pleaces
+# Always on the road
+
+My plans is create APP with using map (TomTom)
+
+I plan, this app will have 5 cards:
+
+- favorites pleaces,
+- routes,
+- plans
+- quick notes
+- search (on map)
+
+and profile
+
+I'll create back-end in NodeJS and dataBase in MySQL
+
+All aplication will be in Angular - this is ma second APP in this framework so, I still learing :)
+
+Sources:
+https://developer.tomtom.com/
+
+## Info from Angular:
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
