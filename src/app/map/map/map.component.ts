@@ -16,15 +16,15 @@ export class MapComponent implements OnInit {
       key: apiKey,
       container: "map",
       style: "tomtom://vector/1/basic-main",
-      center: [-0.12634, 51.50276],
-      zoom: 10
+      center: [17.02407, 51.08315],
+      zoom: 15
     });
 
     map.addControl(new tt.NavigationControl());
     this.search();
   }
   search() {
-    this.searchOnMap.searchTitle().subscribe(resp => {
+    this.searchOnMap.searchPlace().subscribe(resp => {
       console.log(resp);
     });
   }

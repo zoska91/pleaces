@@ -27,14 +27,9 @@ export class SearchOnMapService {
     this.url = url;
   }
 
-  searchTitle(): Observable<object> {
-    this.createURL("wroclaw", null);
-    return this.http
-      .get(
-        this.url
-        // "https://api.tomtom.com/search/2/search/pizza.json?limit=100&lon=55&topLeft=nfh&language=pl-PL&connectorSet=IEC62196Type2CableAttached&key=QDSKv20DjAN7ZcBWuAunVkFKFVFUAQ2X"
-      )
-      .pipe(catchError(this.handleError));
+  searchPlace(): Observable<object> {
+    this.createURL("twardogóra", null);
+    return this.http.get(this.url).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
