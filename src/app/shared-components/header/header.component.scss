@@ -106,23 +106,7 @@
   background-color: $light-color;
 
   &__button {
-    background-color: $light-color;
-    border: 1px solid $dark-color;
-    padding: 1vh 6vw;
-    text-decoration: none;
-    text-transform: uppercase;
-    margin-right: 3vw;
-    position: relative;
-    font-size: 0.8em;
-
-    &::before {
-      position: absolute;
-      top: -20%;
-      left: 2px;
-      height: 140%;
-      width: 1px;
-      background-color: $dark-color;
-    }
+    @include button;
   }
 }
 
@@ -189,20 +173,5 @@
     top: 0;
     right: 0;
     display: flex;
-    &__button {
-      padding: 0.7vh 2vw;
-      margin-right: 0;
-      margin-left: 2vw;
-      border-width: 2px;
-      cursor: pointer;
-
-      &::before {
-        transition: 0.2s;
-      }
-
-      &:hover::before {
-        left: 95%;
-      }
-    }
   }
 }
