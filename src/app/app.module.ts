@@ -6,7 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MapModule } from "./map/map.module";
-import { HomeModule } from "./home/home.module";
+import { PagesModule } from "./pages/pages.module";
 import { SharedComponentsModule } from "./shared-components/shared-component.module";
 
 @NgModule({
@@ -16,7 +16,7 @@ import { SharedComponentsModule } from "./shared-components/shared-component.mod
     AppRoutingModule,
     MapModule,
     HttpClientModule,
-    HomeModule,
+    PagesModule,
     SharedComponentsModule
   ],
   providers: [SearchOnMapService],

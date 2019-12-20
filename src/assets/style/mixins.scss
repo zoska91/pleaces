@@ -20,10 +20,10 @@
   &::before {
     position: absolute;
     top: -20%;
-    left: 2px;
+    left: 5%;
     height: 140%;
-    width: 1px;
-    background-color: $dark-color;
+    width: 2px;
+    background-color: $border-color;
   }
 
   @media (min-width: 860px) {
