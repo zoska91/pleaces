@@ -16,7 +16,7 @@ export class MapComponent implements OnInit {
   zoom: number = 4;
 
   ngOnInit() {
-    this.showMap();
+    // this.showMap();
   }
 
   showMap() {

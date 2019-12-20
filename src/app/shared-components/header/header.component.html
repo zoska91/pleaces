@@ -1,12 +1,15 @@
 <header class="header">
-  <button class="hamburger">
+  <button
+    [className]="isMenuVisible ? 'hamburger--active hamburger' : 'hamburger'"
+    (click)="toggleNav()"
+  >
     <span class="hamburger__box">
       <span class="hamburger__inner"></span>
     </span>
   </button>
 
-  <nav>
-    <ul class="nav-main">
+  <nav [className]="isMenuVisible ? 'nav-main nav-main--active' : 'nav-main'">
+    <ul class="nav-main__list">
       <li class="nav-main__item">
         <a
           [routerLink]="['/']"
@@ -49,4 +52,13 @@
       </li>
     </ul>
   </nav>
+
+  <div class="buttons-user">
+    <button class="buttons-user__button">
+      {{ isLogin ? "My profile" : "Log in" }}
+    </button>
+    <button class="buttons-user__button">
+      {{ isLogin ? "Log out" : "Sing in" }}
+    </button>
+  </div>
 </header>
