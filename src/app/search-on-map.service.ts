@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 import { API_Kay_TOM_TOM as apiKey } from "../../config";
+import { SearchResults } from "./models/SearchResult";
 
 @Injectable({
   providedIn: "root"
@@ -27,9 +28,11 @@ export class SearchOnMapService {
     this.url = url;
   }
 
-  searchPlace(): Observable<object> {
-    this.createURL("twardogóra", null);
-    return this.http.get(this.url).pipe(catchError(this.handleError));
+  searchPlace(adress: string, country: string): Observable<SearchResults> {
+    this.createURL(adress, country);
+    return this.http
+      .get<SearchResults>(this.url)
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -40,6 +43,7 @@ export class SearchOnMapService {
         `Backend returned code ${error.status}, ` + `body was: ${error.error}`
       );
     }
+
     return throwError("Something bad happened; please try again later.");
   }
 }

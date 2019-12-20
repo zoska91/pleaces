@@ -51,8 +51,8 @@ create table History (
      createData date not null,
      adres varchar(500),
      historyDate date,
-     lat int,
-     lon int
+     lat FLOAT,
+     lon FLOAT
 
 )
 
@@ -81,8 +81,8 @@ create table Plans (
      title varchar(255) not null, 
      createData date not null,
      adres varchar(500),
-     lat int,
-     lon int
+     lat FLOAT,
+     lon FLOAT
 
 )
 
@@ -97,7 +97,6 @@ values (1, null, 'chce tam byc ', now(), 'banda',  51.08315, 17.02407)
 
 select * from Plans
 
-ALTER TABLE Plans MODIFY lon FLOAT;
 
 --------------------------------------------------------------------
 
@@ -110,10 +109,10 @@ create table Roads (
      createData date not null,
      adresFrom varchar(500),
      adresTo varchar(500),
-     latFrom int,
-     lonFrom int,
-     latTo int,
-     lonTo int
+     latFrom FLOAT,
+     lonFrom FLOAT,
+     latTo FLOAT,
+     lonTo FLOAT
 
 )
 
@@ -128,6 +127,6 @@ values (2, null, 'dafewfwefwe', now(), 'nylonowanowy budyn', 'dom', 51.08315, 17
 insert into Roads (userId, text, title, createData, adresFrom, adresTo, latFrom, lonFrom, latTo, lonTo)
 values (2, 'hen daleko', 'nowa trasa', now(), 'nylonowanowy budyn', 'dom', 51.08315, 17.02407, 51.36339, 17.47071)
 
-ALTER TABLE Roads MODIFY lonTo FLOAT;
+
 
 select * from Roads

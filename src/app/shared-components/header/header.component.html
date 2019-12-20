@@ -1,0 +1,52 @@
+<header class="header">
+  <button class="hamburger">
+    <span class="hamburger__box">
+      <span class="hamburger__inner"></span>
+    </span>
+  </button>
+
+  <nav>
+    <ul class="nav-main">
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >Home</a
+        >
+      </li>
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/plans']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >Plans</a
+        >
+      </li>
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/history']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >History</a
+        >
+      </li>
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/roads']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >Roads</a
+        >
+      </li>
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/notes']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >Notes</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>

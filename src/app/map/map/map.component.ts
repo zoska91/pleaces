@@ -11,21 +11,33 @@ import tt from "@tomtom-international/web-sdk-maps";
 export class MapComponent implements OnInit {
   constructor(private searchOnMap: SearchOnMapService) {}
 
+  lat: number = 52.23498;
+  lon: number = 21.00849;
+  zoom: number = 4;
+
   ngOnInit() {
+    this.showMap();
+  }
+
+  showMap() {
     const map = tt.map({
       key: apiKey,
       container: "map",
       style: "tomtom://vector/1/basic-main",
-      center: [17.02407, 51.08315],
-      zoom: 15
+      center: [this.lon, this.lat],
+      zoom: this.zoom
     });
 
     map.addControl(new tt.NavigationControl());
-    this.search();
   }
-  search() {
-    this.searchOnMap.searchPlace().subscribe(resp => {
-      console.log(resp);
+
+  search(adress: string, country: string) {
+    this.searchOnMap.searchPlace(adress, country).subscribe(resp => {
+      this.lat = resp.results[0].position.lat;
+      this.lon = resp.results[0].position.lon;
+      if (resp.results[0].address.streetName) this.zoom = 15;
+      else this.zoom = 10;
+      this.showMap();
     });
   }
 }
