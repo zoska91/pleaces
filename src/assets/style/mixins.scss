@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 @mixin hamburger-line {
   width: 100%;
@@ -40,5 +40,42 @@
     &:hover::before {
       left: 95%;
     }
+  }
+}
+
+@mixin formElements {
+  &__item {
+    position: relative;
+    margin: 3vh;
+  }
+
+  &__label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $light-color;
+    padding: 0 3vw;
+    transition: 0.2s;
+  }
+
+  &__input {
+    position: relative;
+    height: 5vh;
+    border: 1px solid $input-border-color;
+    z-index: 5;
+    background-color: transparent;
+  }
+
+  &__input:focus + &__label,
+  &__input:not(:placeholder-shown) + &__label {
+    top: 0;
+    z-index: 6;
+    font-size: 0.8rem;
+    color: darken($input-border-color, 20%);
+  }
+
+  &__button {
+    @include button;
   }
 }

@@ -55,11 +55,26 @@
   </nav>
 
   <div class="buttons-user">
-    <button class="buttons-user__button">
-      {{ isLogin ? "My profile" : "Log in" }}
+    <button class="buttons-user__button" (click)="toggleLogin()">
+      {{ isLogin ? 'My profile' : 'Log in' }}
     </button>
-    <button class="buttons-user__button">
-      {{ isLogin ? "Log out" : "Sing in" }}
+    <button class="buttons-user__button" (click)="toggleSingin()">
+      {{ isLogin ? 'Log ovut' : 'Sing in' }}
     </button>
   </div>
+
+  <div
+    [className]="
+      isLoginVisible ? 'modal-login modal-login--active' : 'modal-login'
+    "
+  >
+    <app-login></app-login>
+  </div>
+  <!-- <div
+    [className]="
+      isLoginVisible ? 'modal-singin modal-singin--active' : 'modal-singin'
+    "
+  >
+    <app-login></app-login>
+  </div> -->
 </header>

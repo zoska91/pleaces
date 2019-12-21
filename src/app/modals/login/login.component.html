@@ -1,0 +1,58 @@
+<form
+  class="loginForm"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit(loginForm.value)"
+>
+  <div class="loginForm__item">
+    <input
+      class="loginForm__input"
+      id="name"
+      type="text"
+      formControlName="name"
+      placeholder=" "
+    />
+    <label class="loginForm__label" for="name">name</label>
+  </div>
+  <div class="loginForm__item">
+    <input
+      class="loginForm__input"
+      id="surname"
+      type="text"
+      formControlName="surname"
+      placeholder=" "
+    />
+    <label class="loginForm__label" for="surname">surname</label>
+  </div>
+  <div class="loginForm__item">
+    <input
+      class="loginForm__input"
+      id="email"
+      type="text"
+      formControlName="email"
+      placeholder=" "
+    />
+    <label class="loginForm__label" for="email">email</label>
+  </div>
+  <div class="loginForm__item">
+    <input
+      class="loginForm__input"
+      id="password"
+      type="text"
+      formControlName="password"
+      placeholder=" "
+    />
+    <label class="loginForm__label" for="password">password</label>
+  </div>
+  <div class="loginForm__item">
+    <input
+      class="loginForm__input"
+      id="adres"
+      type="text"
+      formControlName="adres"
+      placeholder=" "
+    />
+    <label class="loginForm__label" for="adres">adress</label>
+  </div>
+
+  <button class="loginForm__button" type="submit">Log in</button>
+</form>

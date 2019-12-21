@@ -1,13 +1,14 @@
-import { SearchOnMapService } from "./search-on-map.service";
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+import { SearchOnMapService } from './search-on-map.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { MapModule } from "./map/map.module";
-import { PagesModule } from "./pages/pages.module";
-import { SharedComponentsModule } from "./shared-components/shared-component.module";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MapModule } from './map/map.module';
+import { PagesModule } from './pages/pages.module';
+import { SharedComponentsModule } from './shared-components/shared-component.module';
+import { ModalsModule } from './modals/modals.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { SharedComponentsModule } from "./shared-components/shared-component.mod
     MapModule,
     HttpClientModule,
     PagesModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    ModalsModule
   ],
   providers: [SearchOnMapService],
   bootstrap: [AppComponent]
