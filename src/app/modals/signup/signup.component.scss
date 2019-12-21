@@ -1,0 +1,13 @@
+@import '../../../assets/style/variables.scss';
+@import '../../../assets/style/mixins.scss';
+
+.signupForm {
+  position: absolute;
+  background-color: $light-color;
+  width: 100vw;
+  padding: 10vh 0;
+  height: 85vh;
+  text-align: center;
+
+  @include formElements;
+}

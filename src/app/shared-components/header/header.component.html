@@ -58,8 +58,8 @@
     <button class="buttons-user__button" (click)="toggleLogin()">
       {{ isLogin ? 'My profile' : 'Log in' }}
     </button>
-    <button class="buttons-user__button" (click)="toggleSingin()">
-      {{ isLogin ? 'Log ovut' : 'Sing in' }}
+    <button class="buttons-user__button" (click)="toggleSignup()">
+      {{ isLogin ? 'Log out' : 'Sign up' }}
     </button>
   </div>
 
@@ -70,11 +70,11 @@
   >
     <app-login></app-login>
   </div>
-  <!-- <div
+  <div
     [className]="
-      isLoginVisible ? 'modal-singin modal-singin--active' : 'modal-singin'
+      isSignupVisible ? 'modal-signup modal-signup--active' : 'modal-signup'
     "
   >
-    <app-login></app-login>
-  </div> -->
+    <app-signup></app-signup>
+  </div>
 </header>

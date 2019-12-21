@@ -8,25 +8,31 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   isMenuVisible: boolean = false;
   isLoginVisible: boolean = false;
-  isSinginVisible: boolean = false;
+  isSignupVisible: boolean = false;
   isLogin: boolean = false;
   constructor() {}
 
   ngOnInit() {}
 
   toggleNav() {
-    if (this.isLoginVisible || this.isSinginVisible) {
+    if (this.isLoginVisible || this.isSignupVisible) {
       this.isLoginVisible = false;
-      this.isSinginVisible = false;
+      this.isSignupVisible = false;
     }
     this.isMenuVisible = !this.isMenuVisible;
   }
   toggleLogin() {
-    if (this.isMenuVisible) this.isMenuVisible = false;
+    if (this.isMenuVisible || this.isSignupVisible) {
+      this.isSignupVisible = false;
+      this.isMenuVisible = false;
+    }
     this.isLoginVisible = !this.isLoginVisible;
   }
-  toggleSingin() {
-    if (this.isMenuVisible) this.isMenuVisible = false;
-    this.isSinginVisible = !this.isSinginVisible;
+  toggleSignup() {
+    if (this.isMenuVisible || this.isLoginVisible) {
+      this.isLoginVisible = false;
+      this.isMenuVisible = false;
+    }
+    this.isSignupVisible = !this.isSignupVisible;
   }
 }

@@ -1,0 +1,58 @@
+<form
+  class="signupForm"
+  [formGroup]="signupForm"
+  (ngSubmit)="onSubmit(loginForm.value)"
+>
+  <div class="signupForm__item">
+    <input
+      class="signupForm__input"
+      id="name"
+      type="text"
+      formControlName="name"
+      placeholder=" "
+    />
+    <label class="signupForm__label" for="name">name</label>
+  </div>
+  <div class="signupForm__item">
+    <input
+      class="signupForm__input"
+      id="surname"
+      type="text"
+      formControlName="surname"
+      placeholder=" "
+    />
+    <label class="signupForm__label" for="surname">surname</label>
+  </div>
+  <div class="signupForm__item">
+    <input
+      class="signupForm__input"
+      id="email"
+      type="text"
+      formControlName="email"
+      placeholder=" "
+    />
+    <label class="signupForm__label" for="email">email</label>
+  </div>
+  <div class="signupForm__item">
+    <input
+      class="signupForm__input"
+      id="password"
+      type="text"
+      formControlName="password"
+      placeholder=" "
+    />
+    <label class="signupForm__label" for="password">password</label>
+  </div>
+  <div class="signupForm__item">
+    <input
+      class="signupForm__input"
+      id="adres"
+      type="text"
+      formControlName="adres"
+      placeholder=" "
+    />
+    <label class="signupForm__label" for="adres">adress</label>
+  </div>
+
+  <button class="signupForm__button" type="submit">Sign up</button>
+</form>

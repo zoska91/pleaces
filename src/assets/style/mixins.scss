@@ -77,5 +77,6 @@
 
   &__button {
     @include button;
+    margin-top: 5vh;
   }
 }
