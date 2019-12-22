@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { API_Kay_TOM_TOM as apiKey } from '../../../config';
-import { SearchResults } from '../models/SearchResult';
+import { API_Kay_TOM_TOM as apiKey } from '../../../../config';
+import { SearchResults } from '../../models/SearchResult';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class SearchOnMapService {
   private language: string = 'pl-PL';
   private limit: number = 1;
 
-  createURL(value, country): void {
+  createURL(value: string, country: string): void {
     const url = `https://${this.baseURL}/search/${
       this.versionNumber
     }/search/${value}.${this.ext}?${

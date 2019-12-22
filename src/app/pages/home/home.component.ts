@@ -1,7 +1,7 @@
 import { MapComponent } from '../../map/map/map.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { SearchOnMapService } from '../../services/search-on-map.service';
+import { SearchOnMapService } from '../../services/search-on-map/search-on-map.service';
 import { ParamsSearch } from '../../models/ParamsSearch';
 
 @Component({

@@ -13,16 +13,28 @@
     />
     <label class="loginForm__label" for="email">email</label>
   </div>
+  <p
+    *ngIf="!loginForm.get('email').valid && loginForm.get('email').dirty"
+    class="error"
+  >
+    This field is required
+  </p>
   <div class="loginForm__item">
     <input
       class="loginForm__input"
       id="password"
-      type="text"
+      type="password"
       formControlName="password"
       placeholder=" "
     />
     <label class="loginForm__label" for="password">password</label>
   </div>
+  <p
+    *ngIf="!loginForm.get('password').valid && loginForm.get('password').dirty"
+    class="error"
+  >
+    This field is required
+  </p>
 
   <button class="loginForm__button" type="submit">Log in</button>
 </form>

@@ -10,6 +10,7 @@
 # dependencies
 /node_modules
 /angular-node-express-api/node_modules
+/server/node_modules
 
 
 # profiling files
@@ -52,7 +53,7 @@ Thumbs.db
 config.ts
 ./angul
 angular-node-express-api/config.js
-
+server/config.js
 #temporary
 
 /angular-node-express-api

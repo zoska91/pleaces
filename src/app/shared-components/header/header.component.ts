@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,8 @@ export class HeaderComponent implements OnInit {
   isLoginVisible: boolean = false;
   isSignupVisible: boolean = false;
   isLogin: boolean = false;
-  constructor() {}
+
+  constructor(private router: Router, public auth: AuthService) {}
 
   ngOnInit() {}
 
@@ -34,5 +37,13 @@ export class HeaderComponent implements OnInit {
       this.isMenuVisible = false;
     }
     this.isSignupVisible = !this.isSignupVisible;
+  }
+
+  logout(): void {
+    localStorage.removeItem('login');
+    this.auth.isLogin = false;
+    this.isLoginVisible = false;
+    this.isSignupVisible = false;
+    this.router.navigate(['/']);
   }
 }

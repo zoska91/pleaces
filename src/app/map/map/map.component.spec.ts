@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { MapComponent } from './map.component';
-import { SearchOnMapService } from 'src/app/services/search-on-map.service';
+import { SearchOnMapService } from 'src/app/services/search-on-map/search-on-map.service';
 
 describe('MapComponent', () => {
   let component: MapComponent;

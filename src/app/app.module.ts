@@ -8,7 +8,8 @@ import { MapModule } from './map/map.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedComponentsModule } from './shared-components/shared-component.module';
 import { ModalsModule } from './modals/modals.module';
-import { SearchOnMapService } from './services/search-on-map.service';
+import { SearchOnMapService } from './services/search-on-map/search-on-map.service';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,7 @@ import { SearchOnMapService } from './services/search-on-map.service';
     SharedComponentsModule,
     ModalsModule
   ],
-  providers: [SearchOnMapService],
+  providers: [SearchOnMapService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

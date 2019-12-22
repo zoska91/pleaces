@@ -54,16 +54,23 @@
     </ul>
   </nav>
 
-  <div class="buttons-user">
+  <div class="buttons-user" *ngIf="!auth.isLogin">
     <button class="buttons-user__button" (click)="toggleLogin()">
-      {{ isLogin ? 'My profile' : 'Log in' }}
+      Log in
     </button>
     <button class="buttons-user__button" (click)="toggleSignup()">
-      {{ isLogin ? 'Log out' : 'Sign up' }}
+      Sign up
+    </button>
+  </div>
+
+  <div class="buttons-user" *ngIf="auth.isLogin">
+    <button class="buttons-user__button" (click)="logout()">
+      Log out
     </button>
   </div>
 
   <div
+    *ngIf="!auth.isLogin"
     [className]="
       isLoginVisible ? 'modal-login modal-login--active' : 'modal-login'
     "
@@ -71,6 +78,7 @@
     <app-login></app-login>
   </div>
   <div
+    *ngIf="!auth.isLogin"
     [className]="
       isSignupVisible ? 'modal-signup modal-signup--active' : 'modal-signup'
     "

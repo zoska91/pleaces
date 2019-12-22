@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { MapComponent } from './map/map.component';
-import { SearchOnMapService } from '../services/search-on-map.service';
+import { SearchOnMapService } from '../services/search-on-map/search-on-map.service';
 
 @NgModule({
   declarations: [MapComponent],
