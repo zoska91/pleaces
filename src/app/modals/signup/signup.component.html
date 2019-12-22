@@ -1,7 +1,8 @@
 <form
   class="signupForm"
   [formGroup]="signupForm"
-  (ngSubmit)="onSubmit(loginForm.value)"
+  (ngSubmit)="onSubmit()"
+  validate
 >
   <div class="signupForm__item">
     <input
@@ -13,6 +14,12 @@
     />
     <label class="signupForm__label" for="name">name</label>
   </div>
+  <p
+    *ngIf="!signupForm.get('name').valid && signupForm.get('name').dirty"
+    class="error"
+  >
+    This field is required
+  </p>
   <div class="signupForm__item">
     <input
       class="signupForm__input"
@@ -27,22 +34,36 @@
     <input
       class="signupForm__input"
       id="email"
-      type="text"
+      type="email"
       formControlName="email"
       placeholder=" "
     />
     <label class="signupForm__label" for="email">email</label>
   </div>
+  <p
+    *ngIf="!signupForm.get('email').valid && signupForm.get('email').dirty"
+    class="error"
+  >
+    This field is required
+  </p>
   <div class="signupForm__item">
     <input
       class="signupForm__input"
       id="password"
-      type="text"
+      type="password"
       formControlName="password"
       placeholder=" "
     />
     <label class="signupForm__label" for="password">password</label>
   </div>
+  <p
+    *ngIf="
+      !signupForm.get('password').valid && signupForm.get('password').dirty
+    "
+    class="error"
+  >
+    This field is required and must be longer than 6
+  </p>
   <div class="signupForm__item">
     <input
       class="signupForm__input"
@@ -53,6 +74,9 @@
     />
     <label class="signupForm__label" for="adres">adress</label>
   </div>
+  <p *ngIf="!signupForm.get('adres').valid" class="error">
+    This field can't be longer than 50
+  </p>
 
   <button class="signupForm__button" type="submit">Sign up</button>
 </form>

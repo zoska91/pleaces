@@ -1,4 +1,3 @@
-import { SearchOnMapService } from './search-on-map.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,6 +8,7 @@ import { MapModule } from './map/map.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedComponentsModule } from './shared-components/shared-component.module';
 import { ModalsModule } from './modals/modals.module';
+import { SearchOnMapService } from './services/search-on-map.service';
 
 @NgModule({
   declarations: [AppComponent],

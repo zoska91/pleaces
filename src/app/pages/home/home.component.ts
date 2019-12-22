@@ -1,13 +1,13 @@
-import { MapComponent } from "../../map/map/map.component";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { MapComponent } from '../../map/map/map.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { SearchOnMapService } from "../../search-on-map.service";
-import { ParamsSearch } from "../../models/ParamsSearch";
+import { SearchOnMapService } from '../../services/search-on-map.service';
+import { ParamsSearch } from '../../models/ParamsSearch';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   @ViewChild(MapComponent, { static: false }) child: MapComponent;

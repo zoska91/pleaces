@@ -10,4 +10,9 @@
   text-align: center;
 
   @include formElements;
+
+  @media (min-width: 860px) {
+    width: 50vw;
+    margin-left: 50vw;
+  }
 }

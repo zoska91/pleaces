@@ -1,10 +1,10 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { MapComponent } from "./map.component";
-import { SearchOnMapService } from "src/app/search-on-map.service";
+import { MapComponent } from './map.component';
+import { SearchOnMapService } from 'src/app/services/search-on-map.service';
 
-describe("MapComponent", () => {
+describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
 
@@ -22,7 +22,7 @@ describe("MapComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
