@@ -6,15 +6,17 @@
   <div class="loginForm__item">
     <input
       class="loginForm__input"
-      id="email"
+      id="emailLogin"
       type="text"
-      formControlName="email"
+      formControlName="emailLogin"
       placeholder=" "
     />
-    <label class="loginForm__label" for="email">email</label>
+    <label class="loginForm__label" for="emailLogin">email</label>
   </div>
   <p
-    *ngIf="!loginForm.get('email').valid && loginForm.get('email').dirty"
+    *ngIf="
+      !loginForm.get('emailLogin').valid && loginForm.get('emailLogin').dirty
+    "
     class="error"
   >
     This field is required
@@ -22,19 +24,23 @@
   <div class="loginForm__item">
     <input
       class="loginForm__input"
-      id="password"
+      id="passwordLogin"
       type="password"
-      formControlName="password"
+      formControlName="passwordLogin"
       placeholder=" "
     />
-    <label class="loginForm__label" for="password">password</label>
+    <label class="loginForm__label" for="passwordLogin">password</label>
   </div>
   <p
-    *ngIf="!loginForm.get('password').valid && loginForm.get('password').dirty"
+    *ngIf="
+      !loginForm.get('passwordLogin').valid &&
+      loginForm.get('passwordLogin').dirty
+    "
     class="error"
   >
     This field is required
   </p>
+  <p *ngIf="error" class="error">{{ error }}</p>
 
   <button class="loginForm__button" type="submit">Log in</button>
 </form>

@@ -14,12 +14,7 @@
     />
     <label class="signupForm__label" for="name">name</label>
   </div>
-  <p
-    *ngIf="!signupForm.get('name').valid && signupForm.get('name').dirty"
-    class="error"
-  >
-    This field is required
-  </p>
+
   <div class="signupForm__item">
     <input
       class="signupForm__input"
@@ -77,6 +72,7 @@
   <p *ngIf="!signupForm.get('adres').valid" class="error">
     This field can't be longer than 50
   </p>
+  <p *ngIf="error" class="error">{{ error }}</p>
 
   <button class="signupForm__button" type="submit">Sign up</button>
 </form>

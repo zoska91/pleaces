@@ -6,18 +6,21 @@ create table Users (
     name varchar(50) not null,
     surname varchar(50) not null,
     email varchar(50) not null,
-    password varchar(50) not null,
+    password varchar(70) not null,
     adres varchar(50)
 
 )
 
 ALTER TABLE Roads CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-select * from Users
+select * from onRoad.Users
 
 insert into Users ( name, surname, email, password, adres) 
 values ( 'ewa', 'wilk', 'ewawilk@gmail.com', 'password2', 'gliniana 3, Wrocław, 55-555')
 
+select length('$2b$10$YhaGr6bsrjczPV8XY9g8xOWs86gsVsadSID4t53I2zAuIR..SxPG6')
+
+ALTER TABLE onRoad.Users MODIFY COLUMN password VARCHAR(100);
 -----------------------------------------------------------------------
 create table Notes (
     id int AUTO_INCREMENT PRIMARY KEY,

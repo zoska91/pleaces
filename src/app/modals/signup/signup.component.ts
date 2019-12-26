@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { User } from './../../models/User';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,8 +13,13 @@ import { User } from './../../models/User';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   user: User;
+  error: string;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {
     this.signupForm = this.createUserForm();
   }
 
@@ -20,7 +27,7 @@ export class SignupComponent implements OnInit {
 
   createUserForm() {
     return this.formBuilder.group({
-      name: ['', Validators.required],
+      name: [''],
       surname: '',
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -29,10 +36,22 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log();
-
-    if (this.signupForm.valid)
-      console.log('tu bedzie post', this.signupForm.value);
-    else console.log('valid');
+    if (this.signupForm.valid) {
+      const { email, password } = this.signupForm.value;
+      console.log(this.signupForm.value);
+      this.auth.signupUser(this.signupForm.value).subscribe(resp => {
+        console.log(resp);
+        if (resp.message === 'created') {
+          this.auth.loginUser(email, password).subscribe(resp => {
+            localStorage.setItem('login', resp.token);
+            this.auth.isLogin = true;
+            this.router.navigate(['/plans']);
+          });
+        } else {
+          this.error = resp.message;
+          console.log(this.error);
+        }
+      });
+    } else console.log('valid');
   }
 }

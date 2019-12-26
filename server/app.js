@@ -29,8 +29,10 @@ app.get('/api', (req, res) => {
 });
 
 const loginRouter = require('./routes/login');
+const signupRouter = require('./routes/signup');
 
 app.use('/api/login', loginRouter);
+app.use('/api/signup', signupRouter);
 
 const verifyToken = (req, res, next) => {
   const bearerHeader = req.headers['authorization'];
@@ -59,19 +61,19 @@ app.post('/api/posts', verifyToken, (req, res) => {
   });
 });
 
-app.post('/api/login', (req, res) => {
-  const user = {
-    id: 1,
-    username: 'zoo',
-    email: 'zoska91@wp.pl'
-  };
+// app.post('/api/login', (req, res) => {
+//   const user = {
+//     id: 1,
+//     username: 'zoo',
+//     email: 'zoska91@wp.pl'
+//   };
 
-  jwt.sign({ user }, 'secret', (err, token) => {
-    res.json({
-      token
-    });
-  });
-});
+//   jwt.sign({ user }, 'secret', (err, token) => {
+//     res.json({
+//       token
+//     });
+//   });
+// });
 
 //format od token
 
