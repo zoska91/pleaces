@@ -1,0 +1,84 @@
+@import '../../../assets/style/mixins.scss';
+@import '../../../assets/style/variables.scss';
+
+.notes {
+  min-height: 80vh;
+  padding: 0 5vw;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5vw;
+  }
+
+  &__add-note {
+    @include button;
+    margin: 0;
+  }
+
+  &__title {
+    width: 50%;
+    margin-bottom: 5vh;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  &__list {
+    padding: 0vh 5vw;
+    margin: 0;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    margin-bottom: 2vh;
+    background-color: $bg-notes;
+    color: $light-color;
+    padding: 2vh 5vw;
+    display: flex;
+    justify-content: space-between;
+
+    &--title {
+      cursor: pointer;
+      font-weight: bold;
+      padding: 2vh 5vw;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    span {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-weight: bolder;
+      text-shadow: 1px 2px $light-color;
+      cursor: pointer;
+      color: $red-color;
+    }
+  }
+}
+
+.addNoteForm {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  transition: 0.3s;
+
+  &--active {
+    top: 15vh;
+  }
+
+  span {
+    color: $light-color;
+    font-weight: bold;
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-style: italic;
+    background-color: $red-color;
+    padding: 1vh 3vw;
+  }
+}

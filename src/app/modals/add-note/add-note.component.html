@@ -1,0 +1,54 @@
+<form
+  class="addNoteForm"
+  [formGroup]="addNoteForm"
+  (ngSubmit)="onSubmit()"
+  validate
+>
+  <div class="addNoteForm__item">
+    <input
+      class="addNoteForm__input"
+      id="noteTitle"
+      type="text"
+      formControlName="noteTitle"
+      placeholder=" "
+    />
+    <label class="addNoteForm__label" for="noteTitle">title</label>
+  </div>
+  <p
+    *ngIf="
+      !addNoteForm.get('noteTitle').valid && addNoteForm.get('noteTitle').dirty
+    "
+    class="error"
+  >
+    This field is required
+  </p>
+
+  <div class="addNoteForm__item">
+    <textarea
+      class="addNoteForm__input addNoteForm__textarea"
+      name="noteText"
+      id="noteText"
+      formControlName="noteText"
+      rows="10"
+    ></textarea>
+
+    <label class="addNoteForm__label" for="notetextd">note</label>
+  </div>
+  <p
+    *ngIf="
+      !addNoteForm.get('noteText').valid && addNoteForm.get('noteText').dirty
+    "
+    class="error"
+  >
+    text can't be longer than 500
+  </p>
+
+  <div class="addNoteForm__connect-buttons">
+    <button class="addNoteForm__button" type="submit">Connect with Road</button>
+    <button class="addNoteForm__button" type="submit">Connect with Plan</button>
+    <button class="addNoteForm__button" type="submit">
+      Connect with History
+    </button>
+  </div>
+  <button class="addNoteForm__button" type="submit">Add note</button>
+</form>

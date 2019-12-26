@@ -1,3 +1,4 @@
+import { Resp } from './../../models/Resp';
 import { Injectable } from '@angular/core';
 import {
   HttpClient,
@@ -6,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { Note } from 'src/app/models/Note';
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +25,17 @@ export class NotesService {
     })
   };
 
-  getAllNotes(): Observable<object> {
+  getAllNotes(): Observable<Resp> {
     const url: string = `${this.API}/notes/get-all`;
     return this.http
-      .get<Object>(url, this.httpOptions)
+      .get<Resp>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  addNote(data: Note): Observable<Resp> {
+    const url: string = `${this.API}/notes/add`;
+    return this.http
+      .post<Resp>(url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

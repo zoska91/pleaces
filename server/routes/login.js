@@ -23,9 +23,10 @@ router.post('/', (req, res) => {
           const data = { id: user.id, email: user.email };
           jwt.sign(
             { data },
-            { secret: config.secret },
+            config.secret,
             { expiresIn: config.maxAgeSession },
             (err, token) => {
+              if (err) console.log(err);
               res.json({ message: 'successful', token });
             }
           );

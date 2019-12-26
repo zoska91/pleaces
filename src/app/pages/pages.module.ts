@@ -1,15 +1,16 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { HomeComponent } from "./home/home.component";
-import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
-import { MapModule } from "../map/map.module";
-import { BrowserModule } from "@angular/platform-browser";
-import { NotesComponent } from "./notes/notes.component";
-import { PlansComponent } from "./plans/plans.component";
-import { HistoryComponent } from "./history/history.component";
-import { RoadsComponent } from "./roads/roads.component";
+import { MapModule } from '../map/map.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NotesComponent } from './notes/notes.component';
+import { PlansComponent } from './plans/plans.component';
+import { HistoryComponent } from './history/history.component';
+import { RoadsComponent } from './roads/roads.component';
+import { ModalsModule } from '../modals/modals.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RoadsComponent } from "./roads/roads.component";
     MapModule,
     HttpClientModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ModalsModule
   ],
   exports: [
     HomeComponent,

@@ -1,1 +1,27 @@
-<p>notes works!</p>
+<main class="notes">
+  <header class="notes__header">
+    <h2 class="notes__title">Notes</h2>
+    <button class="notes__add-note" (click)="toggleAddNoteForm()">
+      Add Note
+    </button>
+  </header>
+  <ul *ngIf="notesArray" class="notes__list">
+    <li *ngFor="let note of notesArray" class="notes__item">
+      <p class="notes__item--title">{{ note.title }}</p>
+      <p class="notes__item--date">
+        {{ note.createDate | date: 'dd/MM/yy' }}
+      </p>
+      <span>X</span>
+    </li>
+  </ul>
+</main>
+
+<aside
+  [className]="
+    addNoteActive ? 'addNoteForm--active addNoteForm' : 'addNoteForm'
+  "
+  class="addNoteForm"
+>
+  <app-add-note></app-add-note>
+  <span (click)="toggleAddNoteForm()">close</span>
+</aside>
