@@ -30,36 +30,24 @@ app.get('/api', (req, res) => {
 
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
+const notesRouter = require('./routes/notes');
 
 app.use('/api/login', loginRouter);
 app.use('/api/signup', signupRouter);
+app.use('/api/notes', notesRouter);
 
-const verifyToken = (req, res, next) => {
-  const bearerHeader = req.headers['authorization'];
-
-  if (typeof bearerHeader !== 'undefined') {
-    const bearer = bearerHeader.split(' ');
-    const bearerToken = bearer[1];
-    req.token = bearerToken;
-    next();
-  } else {
-    //forbidden
-    console.log(req.headers['Authorization']);
-  }
-};
-
-app.post('/api/posts', verifyToken, (req, res) => {
-  jwt.verify(req.token, 'secret', (err, authData) => {
-    if (err) {
-      res.json({ message: 'error' });
-    } else {
-      res.json({
-        message: 'Post created...',
-        authData
-      });
-    }
-  });
-});
+// app.post('/api/posts', verifyToken, (req, res) => {
+//   jwt.verify(req.token, 'secret', (err, authData) => {
+//     if (err) {
+//       res.json({ message: 'error' });
+//     } else {
+//       res.json({
+//         message: 'Post created...',
+//         authData
+//       });
+//     }
+//   });
+// });
 
 // app.post('/api/login', (req, res) => {
 //   const user = {

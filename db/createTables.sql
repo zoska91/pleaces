@@ -34,8 +34,8 @@ create table Notes (
 
 use onRoad
 
-insert into Notes (text, createDate, userId, historyId, planId, roadId)
-values ('cos tam cos tam', now(), 1, null, null, 1)
+insert into onRoad.Notes (text, createDate, userId, historyId, planId, roadId)
+values ('cos tam cos tam', now(), 5, null, null, 1)
 
 select * from Notes
 select n.id from Notes n inner join Users u on u.Id = n.userId

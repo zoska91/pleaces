@@ -5,7 +5,7 @@ My plans is create APP with using map (TomTom)
 I plan, this app will have 5 cards:
 
 - favorites pleaces,
-- routes,
+- roads,
 - plans
 - quick notes
 - search (on map)

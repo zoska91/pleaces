@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { NotesService } from './../../services/notes/notes.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
+  notesArray: object;
 
-  constructor() { }
+  constructor(private notes: NotesService) {}
 
   ngOnInit() {
+    this.getNotes();
   }
 
+  getNotes() {
+    this.notes.getAllNotes().subscribe(resp => {
+      console.log(resp);
+    });
+  }
 }

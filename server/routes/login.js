@@ -20,9 +20,10 @@ router.post('/', (req, res) => {
     if (user) {
       bcrypt.compare(password, user.password, (err, result) => {
         if (result) {
+          const data = { id: user.id, email: user.email };
           jwt.sign(
-            { user },
-            'secretkey',
+            { data },
+            { secret: config.secret },
             { expiresIn: config.maxAgeSession },
             (err, token) => {
               res.json({ message: 'successful', token });
