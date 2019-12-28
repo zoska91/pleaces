@@ -6,11 +6,22 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { AddNoteComponent } from './add-note/add-note.component';
+import { OneNoteComponent } from './one-note/one-note.component';
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, AddNoteComponent],
+  declarations: [
+    LoginComponent,
+    SignupComponent,
+    AddNoteComponent,
+    OneNoteComponent
+  ],
   imports: [CommonModule, ReactiveFormsModule],
-  exports: [LoginComponent, SignupComponent, AddNoteComponent],
+  exports: [
+    LoginComponent,
+    SignupComponent,
+    AddNoteComponent,
+    OneNoteComponent
+  ],
   providers: [NotesService]
 })
 export class ModalsModule {}

@@ -26,17 +26,23 @@
 
   &__list {
     padding: 0vh 5vw;
-    margin: 0;
+    display: grid;
+    max-width: 1366px;
+    margin: 0 auto;
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 
   &__item {
+    min-width: 300px;
     position: relative;
     display: flex;
     margin-bottom: 2vh;
     background-color: $bg-notes;
     color: $light-color;
     padding: 2vh 5vw;
-    display: flex;
     justify-content: space-between;
 
     &--title {
@@ -46,6 +52,11 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       margin: 0;
+      @media (orientation: landscape) {
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
     }
     span {
       position: absolute;
@@ -59,11 +70,13 @@
   }
 }
 
-.addNoteForm {
+.addNoteForm,
+.oneNote {
   position: fixed;
   top: -100%;
   left: 0;
   transition: 0.3s;
+  height: 80vh;
 
   &--active {
     top: 15vh;
@@ -74,11 +87,24 @@
     font-weight: bold;
     position: absolute;
     bottom: 5vh;
-    left: 50%;
+    left: 50vw;
     transform: translateX(-50%);
     font-size: 1rem;
     font-style: italic;
     background-color: $red-color;
     padding: 1vh 3vw;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 768px) {
+  .notes {
+    font-size: 20px;
+
+    &__list {
+      width: 100%;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2vh 3vw;
+    }
   }
 }

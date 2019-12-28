@@ -1,6 +1,7 @@
+import { OneNoteComponent } from './../../modals/one-note/one-note.component';
 import { Observable } from 'rxjs';
 import { NotesService } from './../../services/notes/notes.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Note } from 'src/app/models/Note';
 
 @Component({
@@ -9,8 +10,11 @@ import { Note } from 'src/app/models/Note';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
+  @ViewChild(OneNoteComponent, { static: false }) child: OneNoteComponent;
   notesArray: Note[];
   addNoteActive: boolean = false;
+  oneNoteActive: boolean = false;
+  oneNote: Note;
 
   constructor(private notes: NotesService) {}
 
@@ -26,7 +30,24 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  toggleAddNoteForm() {
+  getNoteId(id: number) {
+    this.child.getOneNote(id);
+  }
+
+  deleteNote(id: number): void {
+    this.notes.deleteNote(id).subscribe(resp => {
+      console.log(resp);
+      this.getNotes();
+    });
+  }
+
+  toggleAddNoteForm(event: MouseEvent) {
     this.addNoteActive = !this.addNoteActive;
   }
+
+  toggleOneNote(event: MouseEvent) {
+    this.oneNoteActive = !this.oneNoteActive;
+  }
 }
+
+//TODO child can toggleAddNoreForm and getNotes

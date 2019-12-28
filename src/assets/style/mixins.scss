@@ -83,3 +83,45 @@
     margin-top: 5vh;
   }
 }
+
+@mixin formNote {
+  width: 100vw;
+  height: 85vh;
+  padding: 3vh 0;
+  height: 85vh;
+  text-align: center;
+
+  background-color: $light-color;
+
+  @include formElements;
+
+  &__textarea {
+    height: 20vh;
+    width: 70vw;
+    font-size: 1.2rem;
+    padding: 2vh 5vw;
+    max-width: 500px;
+  }
+
+  &__button {
+    margin-left: 0;
+  }
+
+  &__input {
+    text-align: center;
+  }
+
+  &__connect-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5vh 0 0;
+
+    button {
+      font-size: 0.7rem;
+      width: 60vw;
+      margin: 1vh;
+      max-width: 300px;
+    }
+  }
+}

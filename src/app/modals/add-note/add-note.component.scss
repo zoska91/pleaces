@@ -17,6 +17,11 @@
     width: 70vw;
     font-size: 1.2rem;
     padding: 2vh 5vw;
+    max-width: 500px;
+  }
+
+  &__button {
+    margin-left: 0;
   }
 
   &__connect-buttons {
@@ -29,6 +34,7 @@
       font-size: 0.7rem;
       width: 60vw;
       margin: 1vh;
+      max-width: 300px;
     }
   }
 }

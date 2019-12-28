@@ -1,5 +1,6 @@
+import { EventEmitter } from '@angular/core';
 import { NotesService } from './../../services/notes/notes.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -13,6 +14,8 @@ import {
   styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
+  @Output() toggle: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
+  @Output() getNotes: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
   addNoteForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private notes: NotesService) {
@@ -33,12 +36,12 @@ export class AddNoteComponent implements OnInit {
 
   onSubmit() {
     if (this.addNoteForm.valid) {
-      console.log(this.addNoteForm.value);
-      console.log('ok');
       this.notes.addNote(this.addNoteForm.value).subscribe(resp => {
         if (resp.message === 'created') {
           console.log(resp.message);
           this.addNoteForm.reset();
+          this.toggle.emit();
+          this.getNotes.emit();
         }
       });
     } else console.log('valid');
