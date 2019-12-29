@@ -125,21 +125,23 @@ create table Users
      lon FLOAT
 
 )
+                    select *
+                    from onRoad.Plans
 
-                    insert into Plans
+                    insert into onRoad.Plans
                          (userId, text, title, createData, adres, lat, lon)
                     values
-                         (1, 'kiedys tam pojade', 'nowa wies', now(), 'nylonowa, nowy budyn', null, null)
+                         (5, 'kiedys tam pojade', 'nowa wies', now(), 'nylonowa, nowy budyn', null, null)
 
-                    insert into Plans
+                    insert into onRoad.Plans
                          (userId, text, title, createData, adres, lat, lon)
                     values
-                         (2, 'extra miejsce', 'gdzies bede', now(), 'gdzies', null, null)
+                         (5, 'extra miejsce', 'gdzies bede', now(), 'gdzies', null, null)
 
-                    insert into Plans
+                    insert into onRoad.Plans
                          (userId, text, title, createData, adres, lat, lon)
                     values
-                         (1, null, 'chce tam byc ', now(), 'banda', 51.08315, 17.02407)
+                         (5, null, 'chce tam byc ', now(), 'banda', 51.08315, 17.02407)
 
                     select *
                     from Plans

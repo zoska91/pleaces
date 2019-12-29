@@ -31,10 +31,12 @@ app.get('/api', (req, res) => {
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 const notesRouter = require('./routes/notes');
+const plansRouter = require('./routes/plans');
 
 app.use('/api/login', loginRouter);
 app.use('/api/signup', signupRouter);
 app.use('/api/notes', notesRouter);
+app.use('/api/plans', plansRouter);
 
 // app.post('/api/posts', verifyToken, (req, res) => {
 //   jwt.verify(req.token, 'secret', (err, authData) => {

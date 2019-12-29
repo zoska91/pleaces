@@ -12,6 +12,7 @@
     <ul class="nav-main__list">
       <li class="nav-main__item">
         <a
+          (click)="(toggleNav)"
           [routerLinkActiveOptions]="{ exact: true }"
           [routerLink]="['/']"
           routerLinkActive="link-active"

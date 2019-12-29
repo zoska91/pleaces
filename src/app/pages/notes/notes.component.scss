@@ -39,13 +39,26 @@
     min-width: 300px;
     position: relative;
     display: flex;
+    flex-direction: column;
     margin-bottom: 2vh;
-    background-color: $bg-notes;
+    background-color: $bg-plan-color;
+    border: 2px solid $light-color;
+    box-shadow: 0 0 3px 3px $bg-plan-color;
     color: $light-color;
     padding: 2vh 5vw;
     justify-content: space-between;
 
+    &--header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--text {
+      font-size: 0.9rem;
+    }
+
     &--title {
+      flex-grow: 1;
       cursor: pointer;
       font-weight: bold;
       padding: 2vh 5vw;
@@ -57,6 +70,10 @@
         display: flex;
         align-items: center;
       }
+    }
+
+    &--date {
+      font-size: 0.8rem;
     }
     span {
       position: absolute;

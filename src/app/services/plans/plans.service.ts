@@ -7,13 +7,12 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-import { Note } from 'src/app/models/Note';
 import { Resp } from './../../models/Resp';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NotesService {
+export class PlansService {
   private API: string = 'http://localhost:8080/api';
   private token: string = localStorage.getItem('login');
 
@@ -26,38 +25,10 @@ export class NotesService {
     })
   };
 
-  getAllNotes(): Observable<Resp> {
-    const url: string = `${this.API}/notes/get-all`;
+  getAllPlans(): Observable<Resp> {
+    const url = `${this.API}/plans/get-all`;
     return this.http
       .get<Resp>(url, this.httpOptions)
-      .pipe(catchError(this.handleError));
-  }
-
-  getOneNote(id: number): Observable<Resp> {
-    const url: string = `${this.API}/notes/get-one-note/${id}`;
-    return this.http
-      .get<Resp>(url, this.httpOptions)
-      .pipe(catchError(this.handleError));
-  }
-
-  addNote(data: Note): Observable<Resp> {
-    const url: string = `${this.API}/notes/add`;
-    return this.http
-      .post<Resp>(url, data, this.httpOptions)
-      .pipe(catchError(this.handleError));
-  }
-
-  updateNote(data: Note, id: number): Observable<Resp> {
-    const url = `${this.API}/notes/${id}`;
-    return this.http
-      .put<Resp>(url, data, this.httpOptions)
-      .pipe(catchError(this.handleError));
-  }
-
-  deleteNote(id: number): Observable<{}> {
-    const url = `${this.API}/notes/${id}`;
-    return this.http
-      .delete(url, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

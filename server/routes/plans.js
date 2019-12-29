@@ -37,7 +37,7 @@ router.post('/add', verifyToken, (req, res) => {
 });
 
 router.get('/get-all', verifyToken, (req, res) => {
-  // console.log('body', req.body);
+  console.log('body', req.body);
 
   jwt.verify(req.token, config.secret, (err, authData) => {
     if (err) {
@@ -45,12 +45,12 @@ router.get('/get-all', verifyToken, (req, res) => {
       res.json({ message: 'error' });
     } else {
       console.log('auth', authData);
-      const sql = `SELECT * from Notes where userId=${authData.data.id}`;
+      const sql = `SELECT * from Plans where userId=${authData.data.id}`;
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
         else {
           console.log('result', result);
-          res.json({ notes: result });
+          res.json({ plans: result });
         }
       });
     }
@@ -71,38 +71,6 @@ router.get('/get-one-note/:id', verifyToken, (req, res) => {
         if (err) console.log(err);
         console.log('result', result);
         res.json({ notes: result });
-      });
-    }
-  });
-});
-
-router.put('/:id', verifyToken, (req, res) => {
-  console.log('edit', req.body);
-  const {
-    editNoteTitle,
-    editNoteHistoryId,
-    editNotePlanId,
-    editNoteRoadId,
-    editNoteText
-  } = req.body;
-
-  jwt.verify(req.token, config.secret, (err, authData) => {
-    if (err) {
-      console.log(err);
-      res.json({ message: 'error' });
-    } else {
-      console.log('auth', authData);
-      console.log(req.params);
-      const sql = `
-        UPDATE Notes SET title='${editNoteTitle}', text='${editNoteText}', historyId=${editNoteHistoryId ||
-        null}, planId=${editNotePlanId || null}, roadId=${editNoteRoadId ||
-        null}, createDate=now()  WHERE id = ${req.params.id} `;
-
-      const query = db.query(sql, (err, result) => {
-        if (err) console.log(err);
-        else {
-          res.json({ message: 'update' });
-        }
       });
     }
   });

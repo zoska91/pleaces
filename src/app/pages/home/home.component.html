@@ -2,21 +2,4 @@
   <div class="map">
     <app-map> </app-map>
   </div>
-  <form class="map-form" (ngSubmit)="search(adress, country)">
-    <input
-      class="map-form__input"
-      type="text"
-      name="adress"
-      [(ngModel)]="adress"
-      placeholder="adress"
-    />
-    <input
-      class="map-form__input"
-      type="text"
-      name="country"
-      [(ngModel)]="country"
-      placeholder="optional: country"
-    />
-    <button class="map-form__button">search</button>
-  </form>
 </main>

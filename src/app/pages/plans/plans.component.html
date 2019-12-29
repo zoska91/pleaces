@@ -1,1 +1,20 @@
-<p>plans works!</p>
+<main class="plans">
+  <header class="plans__header">
+    <h2 class="plans__title">Plans</h2>
+    <!-- <button class="notes__add-note" (click)="toggleAddNoteForm()">
+      Add Note
+    </button> -->
+  </header>
+
+  <ul class="plans__list" *ngIf="plansArray">
+    <li *ngFor="let plan of plansArray" class="plans__item">
+      <p class="plans__item--title">
+        <span>{{ plan.title }} </span>
+        <span>{{ plan.createData | date: 'dd/MM/yy' }}</span>
+      </p>
+      <p class="plans__item--adres">{{ plan.adres }}</p>
+      <p class="plans__item--text">{{ plan.text }}</p>
+      <button class="plans__button">show on map</button>
+    </li>
+  </ul>
+</main>
