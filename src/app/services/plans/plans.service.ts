@@ -8,6 +8,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import { Resp } from './../../models/Resp';
+import { Plan } from 'src/app/models/Plan';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,20 @@ export class PlansService {
     const url = `${this.API}/plans/get-all`;
     return this.http
       .get<Resp>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  getOnePlan(id: number): Observable<Resp> {
+    const url: string = `${this.API}/plans/get-one-plan/${id}`;
+    return this.http
+      .get<Resp>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  addPlan(data: Plan): Observable<Resp> {
+    const url: string = `${this.API}/plans/add`;
+    return this.http
+      .post<Resp>(url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

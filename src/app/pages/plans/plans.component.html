@@ -1,13 +1,17 @@
 <main class="plans">
   <header class="plans__header">
     <h2 class="plans__title">Plans</h2>
-    <!-- <button class="notes__add-note" (click)="toggleAddNoteForm()">
-      Add Note
-    </button> -->
+    <button class="plans__add-plan" (click)="toggleAddPlanForm()">
+      Add Plan
+    </button>
   </header>
 
   <ul class="plans__list" *ngIf="plansArray">
-    <li *ngFor="let plan of plansArray" class="plans__item">
+    <li
+      *ngFor="let plan of plansArray"
+      class="plans__item"
+      (click)="toggleShowMap(plan.id)"
+    >
       <p class="plans__item--title">
         <span>{{ plan.title }} </span>
         <span>{{ plan.createData | date: 'dd/MM/yy' }}</span>
@@ -18,3 +22,24 @@
     </li>
   </ul>
 </main>
+
+<aside
+  [className]="
+    addPlanActive ? 'addPlanForm--active addPlanForm' : 'addPlanForm'
+  "
+>
+  <app-add-plan
+    (toggle)="toggleAddPlanForm()"
+    (getPlans)="getPlans()"
+  ></app-add-plan>
+  <span (click)="toggleAddPlanForm()">close</span>
+</aside>
+
+<aside [className]="showMapActive ? 'map--active map' : 'map'">
+  <!-- <aside class="map--active map"> -->
+  <app-map-modal
+    (toggle)="toggleShowMap(null)"
+    (getPlans)="getPlans()"
+  ></app-map-modal>
+  <span (click)="toggleShowMap(null)">close</span>
+</aside>

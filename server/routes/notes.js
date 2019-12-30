@@ -20,10 +20,16 @@ router.post('/add', verifyToken, (req, res) => {
       res.json({ message: 'error' });
     } else {
       console.log('auth', authData);
-      const sql = `insert into onRoad.Notes(text, createDate, userId, historyId, planId, roadId, title) values ('${noteText}', now(), ${
-        authData.data.id
-      }, ${noteHistoryId || null}, ${notePlanId || null}, ${noteRoadId ||
-        null}, '${noteTitle}')`;
+      const sql = `insert into onRoad.Notes(text, createDate, userId, historyId, planId, roadId, title) values 
+      (
+        '${noteText}', 
+        now(), 
+        ${authData.data.id}, 
+        ${noteHistoryId || null}, 
+        ${notePlanId || null}, 
+        ${noteRoadId || null}, 
+        '${noteTitle}'
+        )`;
 
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);

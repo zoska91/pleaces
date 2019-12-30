@@ -6,11 +6,14 @@ const config = require('../config');
 
 router.post('/add', verifyToken, (req, res) => {
   const {
-    noteTitle,
-    noteHistoryId,
-    notePlanId,
-    noteRoadId,
-    noteText
+    planTitle,
+    planHistoryId,
+    planPlanId,
+    planRoadId,
+    planText,
+    planAdres,
+    planLat,
+    planLon
   } = req.body;
 
   jwt.verify(req.token, config.secret, (err, authData) => {
@@ -20,10 +23,17 @@ router.post('/add', verifyToken, (req, res) => {
       res.json({ message: 'error' });
     } else {
       console.log('auth', authData);
-      const sql = `insert into onRoad.Notes(text, createDate, userId, historyId, planId, roadId, title) values ('${noteText}', now(), ${
-        authData.data.id
-      }, ${noteHistoryId || null}, ${notePlanId || null}, ${noteRoadId ||
-        null}, '${noteTitle}')`;
+      const sql = `insert into onRoad.Plans(text, createData, userId, title, adres, lat, lon) 
+      values 
+      (
+      '${planText}', 
+      now(), 
+      ${authData.data.id}, 
+      '${planTitle}',
+      '${planAdres}',
+      ${planLat || null},
+      ${planLon || null}
+      )`;
 
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
@@ -45,7 +55,7 @@ router.get('/get-all', verifyToken, (req, res) => {
       res.json({ message: 'error' });
     } else {
       console.log('auth', authData);
-      const sql = `SELECT * from Plans where userId=${authData.data.id}`;
+      const sql = `SELECT * from onRoad.Plans where userId=${authData.data.id}`;
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
         else {
@@ -57,7 +67,7 @@ router.get('/get-all', verifyToken, (req, res) => {
   });
 });
 
-router.get('/get-one-note/:id', verifyToken, (req, res) => {
+router.get('/get-one-plan/:id', verifyToken, (req, res) => {
   // console.log('body', req.body);
 
   jwt.verify(req.token, config.secret, (err, authData) => {
@@ -66,11 +76,11 @@ router.get('/get-one-note/:id', verifyToken, (req, res) => {
       res.json({ message: 'error' });
     } else {
       console.log('auth', authData);
-      const sql = `SELECT * from Notes where userId=${authData.data.id} and id = ${req.params.id}`;
+      const sql = `SELECT * from onRoad.Plans where userId=${authData.data.id} and id = ${req.params.id}`;
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
         console.log('result', result);
-        res.json({ notes: result });
+        res.json({ plans: result });
       });
     }
   });
@@ -86,7 +96,7 @@ router.delete('/:id', verifyToken, (req, res) => {
     } else {
       console.log('auth', authData);
       console.log(req.params);
-      const sql = `DELETE FROM Notes WHERE id = ${req.params.id} AND userId=${authData.data.id} `;
+      const sql = `DELETE FROM Plans WHERE id = ${req.params.id} AND userId=${authData.data.id} `;
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
         else {

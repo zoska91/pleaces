@@ -8,11 +8,33 @@
   flex-direction: column;
 
   &__header {
+    margin: 5vh 0;
+    padding: 0 5vw;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 1366px;
+
+    @media (min-width: 768px) {
+      padding: 0 10vw 3vh;
+      margin: 10vh 0;
+    }
+
     h2 {
-      margin: 0 0 3vh;
+      flex-grow: 1;
+      margin: 0;
+      font-size: 2rem;
+    }
+  }
+
+  &__add-plan {
+    @include button;
+    margin-right: 0;
+
+    @media (min-width: 768px) {
+      font-size: 1.1rem;
+      font-weight: bold;
     }
   }
 
@@ -83,6 +105,33 @@
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
     border: 1px solid $light-color;
+    cursor: pointer;
+  }
+}
+
+.addPlanForm,
+.map {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  transition: 0.3s;
+  height: 80vh;
+
+  &--active {
+    top: 15vh;
+  }
+
+  span {
+    color: $light-color;
+    font-weight: bold;
+    position: absolute;
+    bottom: 5vh;
+    left: 50vw;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-style: italic;
+    background-color: $red-color;
+    padding: 1vh 3vw;
     cursor: pointer;
   }
 }
