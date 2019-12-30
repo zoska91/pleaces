@@ -30,7 +30,7 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  getNoteId(id: number) {
+  getNoteId(id: number): void {
     this.child.getOneNote(id);
   }
 
@@ -41,11 +41,11 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  toggleAddNoteForm(event: MouseEvent) {
+  toggleAddNoteForm(event: MouseEvent): void {
     this.addNoteActive = !this.addNoteActive;
   }
 
-  toggleOneNote(event: MouseEvent) {
+  toggleOneNote(event: MouseEvent): void {
     this.oneNoteActive = !this.oneNoteActive;
   }
 }

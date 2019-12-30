@@ -7,18 +7,18 @@
   </header>
 
   <ul class="plans__list" *ngIf="plansArray">
-    <li
-      *ngFor="let plan of plansArray"
-      class="plans__item"
-      (click)="toggleShowMap(plan.id)"
-    >
+    <li *ngFor="let plan of plansArray" class="plans__item">
+      <button class="plans__delete" (click)="deletePlan(plan.id)">X</button>
+
       <p class="plans__item--title">
         <span>{{ plan.title }} </span>
         <span>{{ plan.createData | date: 'dd/MM/yy' }}</span>
       </p>
       <p class="plans__item--adres">{{ plan.adres }}</p>
       <p class="plans__item--text">{{ plan.text }}</p>
-      <button class="plans__button">show on map</button>
+      <button class="plans__button" (click)="toggleShowMap(plan.id)">
+        show on map
+      </button>
     </li>
   </ul>
 </main>

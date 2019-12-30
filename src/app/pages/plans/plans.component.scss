@@ -107,6 +107,24 @@
     border: 1px solid $light-color;
     cursor: pointer;
   }
+
+  &__delete {
+    position: absolute;
+    top: -2vh;
+    right: -4vw;
+    font-weight: bolder;
+    text-shadow: 1px 2px $light-color;
+    cursor: pointer;
+    padding: 1vh 3vw;
+    color: $red-color;
+    background-color: $light-color;
+    border: 1px solid $bg-plan-color;
+    box-shadow: 0 0 3px 3px $light-color;
+    @media (orientation: landscape) {
+      padding: 1vh 2vh;
+      right: -2vh;
+    }
+  }
 }
 
 .addPlanForm,

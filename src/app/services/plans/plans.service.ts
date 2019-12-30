@@ -47,6 +47,13 @@ export class PlansService {
       .pipe(catchError(this.handleError));
   }
 
+  deletePlan(id: number): Observable<Resp> {
+    const url = `${this.API}/plans/${id}`;
+    return this.http
+      .delete<Resp>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);

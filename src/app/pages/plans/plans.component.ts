@@ -22,21 +22,28 @@ export class PlansComponent implements OnInit {
     this.getPlans();
   }
 
-  getPlans() {
+  getPlans(): void {
     this.plans.getAllPlans().subscribe(resp => {
       console.log(resp);
       this.plansArray = resp.plans;
     });
   }
 
-  toggleAddPlanForm() {
+  toggleAddPlanForm(): void {
     this.addPlanActive = !this.addPlanActive;
   }
 
-  toggleShowMap(id: number) {
+  toggleShowMap(id: number): void {
     this.showMapActive = !this.showMapActive;
     if (this.showMapActive) {
       this.child.findPlace(id);
     }
+  }
+
+  deletePlan(id: number): void {
+    this.plans.deletePlan(id).subscribe(resp => {
+      console.log(resp);
+      this.getPlans();
+    });
   }
 }
