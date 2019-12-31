@@ -1,0 +1,77 @@
+<form
+  class="addHistoryForm"
+  [formGroup]="addHistoryForm"
+  (ngSubmit)="onSubmit()"
+  validate
+>
+  <div class="addHistoryForm__item">
+    <input
+      class="addHistoryForm__input"
+      id="historyTitle"
+      type="text"
+      formControlName="historyTitle"
+      placeholder=" "
+    />
+    <label class="addHistoryForm__label" for="historyTitle">title</label>
+  </div>
+  <p
+    *ngIf="
+      !addHistoryForm.get('historyTitle').valid &&
+      addHistoryForm.get('historyTitle').dirty
+    "
+    class="error"
+  >
+    This field is required
+  </p>
+
+  <div class="addHistoryForm__item">
+    <textarea
+      class="addHistoryForm__input addHistoryForm__textarea"
+      name="historyText"
+      id="historyText"
+      formControlName="historyText"
+      rows="10"
+    ></textarea>
+
+    <label class="addHistoryForm__label" for="historytextd">history</label>
+  </div>
+  <p
+    *ngIf="
+      !addHistoryForm.get('historyText').valid &&
+      addHistoryForm.get('historyText').dirty
+    "
+    class="error"
+  >
+    text can't be longer than 500
+  </p>
+
+  <div class="addHistoryForm__item">
+    <textarea
+      class="addHistoryForm__input addHistoryForm__textarea"
+      name="historyAdres"
+      id="historyAdres"
+      formControlName="historyAdres"
+      rows="10"
+    ></textarea>
+
+    <label class="addHistoryForm__label" for="historyAdres">addres</label>
+  </div>
+  <p
+    *ngIf="
+      !addHistoryForm.get('historyAdres').valid &&
+      addHistoryForm.get('historyAdres').dirty
+    "
+    class="error"
+  >
+    text can't be longer than 500
+  </p>
+
+  <div class="addHistoryForm__connect-buttons">
+    <button class="addHistoryForm__button" type="submit">
+      Connect with Road
+    </button>
+  </div>
+  <button class="addHistoryForm__button" type="submit">
+    Add history
+  </button>
+</form>

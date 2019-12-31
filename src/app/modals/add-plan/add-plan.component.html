@@ -1,0 +1,72 @@
+<form
+  class="addPlanForm"
+  [formGroup]="addPlanForm"
+  (ngSubmit)="onSubmit()"
+  validate
+>
+  <div class="addPlanForm__item">
+    <input
+      class="addPlanForm__input"
+      id="planTitle"
+      type="text"
+      formControlName="planTitle"
+      placeholder=" "
+    />
+    <label class="addPlanForm__label" for="planTitle">title</label>
+  </div>
+  <p
+    *ngIf="
+      !addPlanForm.get('planTitle').valid && addPlanForm.get('planTitle').dirty
+    "
+    class="error"
+  >
+    This field is required
+  </p>
+
+  <div class="addPlanForm__item">
+    <textarea
+      class="addPlanForm__input addPlanForm__textarea"
+      name="planText"
+      id="planText"
+      formControlName="planText"
+      rows="10"
+    ></textarea>
+
+    <label class="addPlanForm__label" for="plantextd">plan</label>
+  </div>
+  <p
+    *ngIf="
+      !addPlanForm.get('planText').valid && addPlanForm.get('planText').dirty
+    "
+    class="error"
+  >
+    text can't be longer than 500
+  </p>
+
+  <div class="addPlanForm__item">
+    <textarea
+      class="addPlanForm__input addPlanForm__textarea"
+      name="planAdres"
+      id="planAdres"
+      formControlName="planAdres"
+      rows="10"
+    ></textarea>
+
+    <label class="addPlanForm__label" for="planAdres">addres</label>
+  </div>
+  <p
+    *ngIf="
+      !addPlanForm.get('planAdres').valid && addPlanForm.get('planAdres').dirty
+    "
+    class="error"
+  >
+    text can't be longer than 500
+  </p>
+
+  <div class="addPlanForm__connect-buttons">
+    <button class="addPlanForm__button" type="submit">Connect with Road</button>
+  </div>
+  <button class="addPlanForm__button" type="submit">
+    Add plan
+  </button>
+</form>

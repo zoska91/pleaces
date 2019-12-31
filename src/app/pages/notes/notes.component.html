@@ -1,0 +1,44 @@
+<main class="notes">
+  <header class="notes__header">
+    <h2 class="notes__title">Notes</h2>
+    <button class="notes__add-note" (click)="toggleAddNoteForm()">
+      Add Note
+    </button>
+  </header>
+  <ul *ngIf="notesArray" class="notes__list">
+    <li *ngFor="let note of notesArray" class="notes__item">
+      <header class="notes__item--header">
+        <p class="notes__item--title" (click)="getNoteId(note.id)">
+          {{ note.title }}
+        </p>
+        <p class="notes__item--date">
+          {{ note.createDate | date: 'dd/MM/yy' }}
+        </p>
+      </header>
+      <p class="notes__item--text">
+        {{ note.text }}
+      </p>
+      <span (click)="deleteNote(note.id)">X</span>
+    </li>
+  </ul>
+</main>
+
+<aside
+  [className]="
+    addNoteActive ? 'addNoteForm--active addNoteForm' : 'addNoteForm'
+  "
+>
+  <app-add-note
+    (toggle)="toggleAddNoteForm()"
+    (getNotes)="getNotes()"
+  ></app-add-note>
+  <span (click)="toggleAddNoteForm()">close</span>
+</aside>
+
+<aside [className]="oneNoteActive ? 'oneNote--active oneNote' : 'oneNote'">
+  <app-one-note
+    (toggle)="toggleOneNote()"
+    (getNotes)="getNotes()"
+  ></app-one-note>
+  <span (click)="toggleOneNote()">close</span>
+</aside>

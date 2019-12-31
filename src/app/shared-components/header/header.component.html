@@ -1,0 +1,89 @@
+<header class="header">
+  <button
+    [className]="isMenuVisible ? 'hamburger--active hamburger' : 'hamburger'"
+    (click)="toggleNav()"
+  >
+    <span class="hamburger__box">
+      <span class="hamburger__inner"></span>
+    </span>
+  </button>
+
+  <nav [className]="isMenuVisible ? 'nav-main nav-main--active' : 'nav-main'">
+    <ul class="nav-main__list">
+      <li class="nav-main__item">
+        <a
+          (click)="(toggleNav)"
+          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLink]="['/']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >Home</a
+        >
+      </li>
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/plans']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >Plans</a
+        >
+      </li>
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/history']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >History</a
+        >
+      </li>
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/roads']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >Roads</a
+        >
+      </li>
+      <li class="nav-main__item">
+        <a
+          [routerLink]="['/notes']"
+          routerLinkActive="link-active"
+          class="nav-main__link"
+          >Notes</a
+        >
+      </li>
+    </ul>
+  </nav>
+
+  <div class="buttons-user" *ngIf="!auth.isLogin">
+    <button class="buttons-user__button" (click)="toggleLogin()">
+      Log in
+    </button>
+    <button class="buttons-user__button" (click)="toggleSignup()">
+      Sign up
+    </button>
+  </div>
+
+  <div class="buttons-user" *ngIf="auth.isLogin">
+    <button class="buttons-user__button" (click)="logout()">
+      Log out
+    </button>
+  </div>
+
+  <div
+    *ngIf="!auth.isLogin"
+    [className]="
+      isLoginVisible ? 'modal-login modal-login--active' : 'modal-login'
+    "
+  >
+    <app-login></app-login>
+  </div>
+  <div
+    *ngIf="!auth.isLogin"
+    [className]="
+      isSignupVisible ? 'modal-signup modal-signup--active' : 'modal-signup'
+    "
+  >
+    <app-signup></app-signup>
+  </div>
+</header>

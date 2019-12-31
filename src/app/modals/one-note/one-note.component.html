@@ -1,0 +1,58 @@
+<form
+  class="oneNote"
+  [formGroup]="editNoteForm"
+  (ngSubmit)="onSubmit()"
+  validate
+>
+  <div class="oneNote__item">
+    <input
+      class="oneNote__input"
+      id="noteTitle"
+      type="text"
+      formControlName="editNoteTitle"
+      placeholder=" "
+    />
+    <label class="oneNote__label" for="noteTitle">title</label>
+  </div>
+  <p
+    *ngIf="
+      !editNoteForm.get('editNoteTitle').valid &&
+      editNoteForm.get('editNoteTitle').dirty
+    "
+    class="error"
+  >
+    This field is required
+  </p>
+
+  <div class="oneNote__item">
+    <textarea
+      class="oneNote__input oneNote__textarea"
+      name="noteText"
+      id="noteText"
+      formControlName="editNoteText"
+      rows="10"
+    ></textarea>
+
+    <label class="oneNote__label" for="notetextd">note</label>
+  </div>
+  <p
+    *ngIf="
+      !editNoteForm.get('editNoteText').valid &&
+      editNoteForm.get('editNoteText').dirty
+    "
+    class="error"
+  >
+    text can't be longer than 500
+  </p>
+
+  <div class="oneNote__connect-buttons">
+    <button class="oneNote__button" type="submit">Connect with Road</button>
+    <button class="oneNote__button" type="submit">Connect with Plan</button>
+    <button class="oneNote__button" type="submit">
+      Connect with History
+    </button>
+  </div>
+  <button class="oneNote__button" type="submit">
+    Edit Note
+  </button>
+</form>

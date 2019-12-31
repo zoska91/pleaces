@@ -1,0 +1,22 @@
+@import '../../../assets/style/variables.scss';
+@import '../../../assets/style/mixins.scss';
+
+.loginForm {
+  position: absolute;
+  background-color: $light-color;
+  width: 100vw;
+  padding: 10vh 0;
+  height: 85vh;
+  text-align: center;
+
+  @include formElements;
+
+  @media (min-width: 860px) {
+    width: 50vw;
+    margin-left: 50vw;
+  }
+}
+
+.error {
+  margin-top: 2vh;
+}

@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/style/mixins.scss';
+@import './assets/style/variables.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap&subset=latin-ext');
+//font-family: 'Raleway', sans-serif;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  content: '';
+  display: block;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Raleway', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.error {
+  color: $red-color;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}

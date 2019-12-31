@@ -1,0 +1,17 @@
+@import '../../../assets/style/mixins.scss';
+@import '../../../assets/style/variables.scss';
+
+.map-modal {
+  width: 100vw;
+  height: 85vh;
+  padding: 3vh 0;
+  height: 85vh;
+  text-align: center;
+
+  background-color: $light-color;
+}
+
+.map {
+  width: 80%;
+  margin: 0 auto;
+}

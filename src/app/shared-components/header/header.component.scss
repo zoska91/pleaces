@@ -1,0 +1,189 @@
+@import '../../../assets/style/mixins.scss';
+@import '../../../assets/style/variables.scss';
+
+.header {
+  height: 15vh;
+  position: relative;
+}
+
+.hamburger,
+.nav-main {
+  transition: transform 0.3s 0.1s ease-in-out;
+}
+
+.hamburger {
+  position: fixed;
+  top: 3vh;
+  right: 3vw;
+  padding: 1vh;
+  display: inline-block;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  z-index: 100;
+
+  &__box {
+    width: 35px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+  }
+
+  &__inner {
+    @include hamburger-line;
+
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.1s 0.2s ease-in-out;
+  }
+
+  &__inner::before,
+  &__inner::after {
+    @include hamburger-line;
+
+    content: '';
+    left: 0;
+    transition: transform 0.2s 0.2s ease-in-out;
+  }
+
+  &__inner::before {
+    top: -10px;
+  }
+
+  &__inner::after {
+    top: 10px;
+  }
+
+  &--active &__inner {
+    background-color: transparent;
+  }
+
+  &--active &__inner:before {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  &--active &__inner:after {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
+
+.nav-main {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: $light-color;
+  height: auto;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+  padding: 5vh;
+
+  &--active {
+    transform: translateX(0px);
+    margin-top: 7vh;
+  }
+
+  &__item {
+    margin-bottom: 20px;
+  }
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1em;
+  }
+}
+
+.buttons-user {
+  position: relative;
+  z-index: 3;
+  padding: 4vh 5vw;
+  background-color: $light-color;
+
+  &__button {
+    @include button;
+  }
+}
+
+.link-active {
+  color: $active-link;
+  font-weight: bold;
+}
+
+@media (min-height: 860px) {
+  .header {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 860px) {
+  .hamburger {
+    display: none;
+  }
+
+  .header {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .nav-main {
+    transform: translateX(0px);
+    margin: 0;
+    padding: 3vh 4vw;
+
+    &__list {
+      display: flex;
+    }
+
+    &__item {
+      position: relative;
+      margin-right: 2vw;
+
+      &::before {
+        position: absolute;
+        height: 1px;
+        width: 0;
+        background-color: $dark-color;
+        bottom: -5px;
+        transform: translateX(-10%);
+        transition: 0.2s;
+      }
+
+      &:hover::before {
+        width: 120%;
+      }
+    }
+  }
+
+  .buttons-user {
+    position: absolute;
+    width: auto;
+    top: 0;
+    right: 0;
+    display: flex;
+  }
+}
+
+.modal-login,
+.modal-signup {
+  position: fixed;
+  top: -100%;
+  height: 85vh;
+  z-index: 2;
+  transition: 0.5s;
+
+  &--active {
+    top: 15vh;
+  }
+}

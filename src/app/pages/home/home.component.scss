@@ -1,0 +1,38 @@
+@import '../../../assets/style/mixins.scss';
+@import '../../../assets/style/variables.scss';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 83vh;
+}
+.map {
+  margin: 3vh 10vw;
+  flex-grow: 1;
+  padding: 5vh 2vh 0;
+  border: 2px solid $border-color;
+  border: 2px solid $border-color;
+  border-top: none;
+  border-bottom: none;
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    left: -5%;
+    top: 2.5vh;
+    width: 60%;
+    margin-bottom: 2vh;
+    height: 2px;
+    background-color: $border-color;
+    z-index: 1;
+  }
+
+  &::after {
+    left: auto;
+    top: auto;
+    right: -5%;
+    bottom: 0.5vh;
+    width: 60%;
+  }
+}

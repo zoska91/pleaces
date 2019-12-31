@@ -1,0 +1,46 @@
+<form
+  class="loginForm"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit(loginForm.value)"
+>
+  <div class="loginForm__item">
+    <input
+      class="loginForm__input"
+      id="emailLogin"
+      type="text"
+      formControlName="emailLogin"
+      placeholder=" "
+    />
+    <label class="loginForm__label" for="emailLogin">email</label>
+  </div>
+  <p
+    *ngIf="
+      !loginForm.get('emailLogin').valid && loginForm.get('emailLogin').dirty
+    "
+    class="error"
+  >
+    This field is required
+  </p>
+  <div class="loginForm__item">
+    <input
+      class="loginForm__input"
+      id="passwordLogin"
+      type="password"
+      formControlName="passwordLogin"
+      placeholder=" "
+    />
+    <label class="loginForm__label" for="passwordLogin">password</label>
+  </div>
+  <p
+    *ngIf="
+      !loginForm.get('passwordLogin').valid &&
+      loginForm.get('passwordLogin').dirty
+    "
+    class="error"
+  >
+    This field is required
+  </p>
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <button class="loginForm__button" type="submit">Log in</button>
+</form>
