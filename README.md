@@ -1,5 +1,17 @@
 # Always on the road
 
+edit: 31.12.2019
+
+On this day I have map, notes, plans, history.
+So you can create account, log in and try basic functions this app.
+
+You add your favorites places where you have been or add places you want to be.
+You can add notes, but I still work on it - I would like to every note can be connect with place in your plan, history or road.
+
+See you soon!
+
+### =====================
+
 My plans is create APP with using map (TomTom)
 
 I plan, this app will have 5 cards:
