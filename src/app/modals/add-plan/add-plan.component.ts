@@ -21,9 +21,6 @@ export class AddPlanComponent implements OnInit {
   createAddPlanForm() {
     return this.formBuilder.group({
       planTitle: ['', Validators.required],
-      planHistoryId: '',
-      planPlanId: '',
-      planRoadId: '',
       planText: ['', Validators.maxLength(500)],
       planAdres: ['', Validators.maxLength(500)],
       planLon: '',

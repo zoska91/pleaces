@@ -1,1 +1,49 @@
-<p>history works!</p>
+<main class="history">
+  <header class="history__header">
+    <h2 class="history__title">History</h2>
+    <button class="history__add-history" (click)="toggleAddHistoryForm()">
+      Add History
+    </button>
+  </header>
+
+  <ul class="history__list" *ngIf="historyArray">
+    <li *ngFor="let history of historyArray" class="history__item">
+      <button class="history__delete" (click)="deleteHistory(history.id)">
+        X
+      </button>
+
+      <p class="history__item--title">
+        <span>{{ history.title }} </span>
+        <span>{{ history.createData | date: 'dd/MM/yy' }}</span>
+      </p>
+      <p class="history__item--adres">{{ history.adres }}</p>
+      <p class="history__item--text">{{ history.text }}</p>
+      <button class="history__button" (click)="toggleShowMap(history.id)">
+        show on map
+      </button>
+    </li>
+  </ul>
+</main>
+
+<aside
+  [className]="
+    addHistoryActive
+      ? 'addHistoryForm--active addHistoryForm'
+      : 'addHistoryForm'
+  "
+>
+  <app-add-history
+    (toggle)="toggleAddHistoryForm()"
+    (getHistory)="getHistory()"
+  ></app-add-history>
+  <span (click)="toggleAddHistoryForm()">close</span>
+</aside>
+
+<aside [className]="showMapActive ? 'map--active map' : 'map'">
+  <!-- <aside class="map--active map"> -->
+  <app-map-modal
+    (toggle)="toggleShowMap(null)"
+    (getHistory)="getHistory()"
+  ></app-map-modal>
+  <span (click)="toggleShowMap(null)">close</span>
+</aside>

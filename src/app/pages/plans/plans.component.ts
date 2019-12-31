@@ -36,7 +36,7 @@ export class PlansComponent implements OnInit {
   toggleShowMap(id: number): void {
     this.showMapActive = !this.showMapActive;
     if (this.showMapActive) {
-      this.child.findPlace(id);
+      this.child.findPlace('plans', id);
     }
   }
 

@@ -7,9 +7,10 @@ import { ModalsModule } from '../modals/modals.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { NotLoginComponent } from './not-login/not-login.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, NotLoginComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -18,6 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule
   ],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent, NotLoginComponent]
 })
 export class SharedComponentsModule {}

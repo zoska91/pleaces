@@ -2,6 +2,7 @@ import { PlansService } from 'src/app/services/plans/plans.service';
 import { MapComponent } from './../../map/map/map.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Plan } from 'src/app/models/Plan';
+import { HistoryService } from 'src/app/services/history.service';
 
 @Component({
   selector: 'app-map-modal',
@@ -10,25 +11,34 @@ import { Plan } from 'src/app/models/Plan';
 })
 export class MapModalComponent implements OnInit {
   @ViewChild(MapComponent, { static: false }) child: MapComponent;
-  constructor(private plans: PlansService) {}
+  constructor(private plans: PlansService, private history: HistoryService) {}
 
-  plan: Plan;
+  place: Plan;
 
   ngOnInit() {}
 
-  findPlace(id: number) {
-    console.log(id);
-    this.plans.getOnePlan(id).subscribe(resp => {
-      this.plan = resp.plans[0];
-      console.log(resp);
-      console.log(this.plan);
-      if (!this.plan.lat || !this.plan.lon) {
-        console.log('not lon');
-        this.child.search(this.plan.adres, null);
-      } else {
-        const position = `${this.plan.lat}, ${this.plan.lon}`;
-        this.child.search(position, null);
-      }
-    });
+  findAddress() {
+    if (!this.place.lat || !this.place.lon) {
+      this.child.search(this.place.adres, null);
+    } else {
+      const position = `${this.place.lat}, ${this.place.lon}`;
+      this.child.search(position, null);
+    }
+  }
+
+  findPlace(type: string, id: number) {
+    console.log(type, id);
+
+    if (type === 'plans') {
+      this.plans.getOnePlan(id).subscribe(resp => {
+        this.place = resp.plans[0];
+        this.findAddress();
+      });
+    } else if (type === 'history') {
+      this.history.getOneHistory(id).subscribe(resp => {
+        this.place = resp.history[0];
+        this.findAddress();
+      });
+    }
   }
 }

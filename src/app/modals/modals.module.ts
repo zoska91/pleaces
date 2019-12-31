@@ -10,6 +10,7 @@ import { AddNoteComponent } from './add-note/add-note.component';
 import { OneNoteComponent } from './one-note/one-note.component';
 import { MapModalComponent } from './map-modal/map-modal.component';
 import { AddPlanComponent } from './add-plan/add-plan.component';
+import { AddHistoryComponent } from './add-history/add-history.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddPlanComponent } from './add-plan/add-plan.component';
     AddNoteComponent,
     OneNoteComponent,
     MapModalComponent,
-    AddPlanComponent
+    AddPlanComponent,
+    AddHistoryComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, MapModule],
   exports: [
@@ -27,7 +29,8 @@ import { AddPlanComponent } from './add-plan/add-plan.component';
     AddNoteComponent,
     OneNoteComponent,
     AddPlanComponent,
-    MapModalComponent
+    MapModalComponent,
+    AddHistoryComponent
   ],
   providers: [NotesService]
 })

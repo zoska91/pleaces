@@ -8,9 +8,9 @@ import { MapModule } from '../map/map.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NotesComponent } from './notes/notes.component';
 import { PlansComponent } from './plans/plans.component';
-import { HistoryComponent } from './history/history.component';
 import { RoadsComponent } from './roads/roads.component';
 import { ModalsModule } from '../modals/modals.module';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [

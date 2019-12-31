@@ -6,4 +6,5 @@ export interface Resp {
   token: string | null;
   notes: Array<Note>;
   plans: Array<Plan>;
+  history: Array<Plan>;
 }

@@ -100,7 +100,7 @@ create table Users
                     (1, null, 'nowe cos', now(), 'chata', null, 51.08315, 17.02407)
 
                select *
-               from History
+               from onRoad.History
 
                ALTER TABLE History MODIFY lat FLOAT;
 
