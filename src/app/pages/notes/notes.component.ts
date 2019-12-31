@@ -24,9 +24,7 @@ export class NotesComponent implements OnInit {
 
   getNotes() {
     this.notes.getAllNotes().subscribe(resp => {
-      console.log(resp);
       this.notesArray = resp.notes;
-      console.log(this.notesArray);
     });
   }
 
@@ -36,7 +34,6 @@ export class NotesComponent implements OnInit {
 
   deleteNote(id: number): void {
     this.notes.deleteNote(id).subscribe(resp => {
-      console.log(resp);
       this.getNotes();
     });
   }
@@ -49,5 +46,3 @@ export class NotesComponent implements OnInit {
     this.oneNoteActive = !this.oneNoteActive;
   }
 }
-
-//TODO child can toggleAddNoreForm and getNotes

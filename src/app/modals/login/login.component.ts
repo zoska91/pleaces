@@ -35,16 +35,13 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       const { emailLogin, passwordLogin } = this.loginForm.value;
-      console.log(this.loginForm.value);
       this.auth.loginUser(emailLogin, passwordLogin).subscribe(resp => {
-        console.log(resp);
         if (resp.message === 'successful') {
           localStorage.setItem('login', resp.token);
           this.auth.isLogin = true;
           this.router.navigate(['/plans']);
         } else {
           this.error = resp.message;
-          console.log(this.error);
         }
       });
     } else console.log('valid');

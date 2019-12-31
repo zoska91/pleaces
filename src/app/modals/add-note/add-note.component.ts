@@ -38,7 +38,6 @@ export class AddNoteComponent implements OnInit {
     if (this.addNoteForm.valid) {
       this.notes.addNote(this.addNoteForm.value).subscribe(resp => {
         if (resp.message === 'created') {
-          console.log(resp.message);
           this.addNoteForm.reset();
           this.toggle.emit();
           this.getNotes.emit();

@@ -37,7 +37,6 @@ export class AddHistoryComponent implements OnInit {
     if (this.addHistoryForm.valid) {
       this.history.addHistory(this.addHistoryForm.value).subscribe(resp => {
         if (resp.message === 'created') {
-          console.log(resp.message);
           this.addHistoryForm.reset();
           this.toggle.emit();
           this.getHistory.emit();

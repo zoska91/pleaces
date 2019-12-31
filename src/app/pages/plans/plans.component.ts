@@ -24,7 +24,6 @@ export class PlansComponent implements OnInit {
 
   getPlans(): void {
     this.plans.getAllPlans().subscribe(resp => {
-      console.log(resp);
       this.plansArray = resp.plans;
     });
   }
@@ -42,7 +41,6 @@ export class PlansComponent implements OnInit {
 
   deletePlan(id: number): void {
     this.plans.deletePlan(id).subscribe(resp => {
-      console.log(resp);
       this.getPlans();
     });
   }

@@ -32,7 +32,6 @@ export class AddPlanComponent implements OnInit {
     if (this.addPlanForm.valid) {
       this.plans.addPlan(this.addPlanForm.value).subscribe(resp => {
         if (resp.message === 'created') {
-          console.log(resp.message);
           this.addPlanForm.reset();
           this.toggle.emit();
           this.getPlans.emit();

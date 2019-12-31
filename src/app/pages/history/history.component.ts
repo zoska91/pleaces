@@ -24,7 +24,6 @@ export class HistoryComponent implements OnInit {
 
   getHistory(): void {
     this.history.getAllHistory().subscribe(resp => {
-      console.log(resp);
       this.historyArray = resp.history;
     });
   }
@@ -42,7 +41,6 @@ export class HistoryComponent implements OnInit {
 
   deleteHistory(id: number): void {
     this.history.deleteHistory(id).subscribe(resp => {
-      console.log(resp);
       this.getHistory();
     });
   }

@@ -22,7 +22,6 @@ export class AuthService {
   }
 
   signupUser(user: User): Observable<Resp> {
-    console.log(user);
     const url: string = `${this.API}/signup`;
 
     return this.http.post<Resp>(url, user).pipe(catchError(this.handleError));
