@@ -38,7 +38,6 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     if (this.signupForm.valid) {
       const { email, password } = this.signupForm.value;
-      console.log(this.signupForm.value);
       this.auth.signupUser(this.signupForm.value).subscribe(resp => {
         console.log(resp);
         if (resp.message === 'created') {
@@ -49,7 +48,6 @@ export class SignupComponent implements OnInit {
           });
         } else {
           this.error = resp.message;
-          console.log(this.error);
         }
       });
     } else console.log('valid');

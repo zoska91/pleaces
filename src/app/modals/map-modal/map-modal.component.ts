@@ -27,8 +27,6 @@ export class MapModalComponent implements OnInit {
   }
 
   findPlace(type: string, id: number) {
-    console.log(type, id);
-
     if (type === 'plans') {
       this.plans.getOnePlan(id).subscribe(resp => {
         this.place = resp.plans[0];

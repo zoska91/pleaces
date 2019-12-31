@@ -57,7 +57,6 @@ export class MapComponent implements OnInit {
 
   search(adress: string, country: string) {
     this.searchOnMap.searchPlace(adress, country).subscribe(resp => {
-      console.log(resp);
       let zoom: number;
       if (resp.results[0].address.streetName) zoom = 15;
       else zoom = 10;

@@ -7,9 +7,7 @@ const config = require('../config');
 router.post('/add', verifyToken, (req, res) => {
   const {
     planTitle,
-    planHistoryId,
-    planPlanId,
-    planRoadId,
+
     planText,
     planAdres,
     planLat,
@@ -19,10 +17,8 @@ router.post('/add', verifyToken, (req, res) => {
   jwt.verify(req.token, config.secret, (err, authData) => {
     if (err) {
       console.log(err);
-      console.log('auth', authData);
       res.json({ message: 'error' });
     } else {
-      console.log('auth', authData);
       const sql = `insert into onRoad.Plans(text, createData, userId, title, adres, lat, lon) 
       values 
       (
@@ -38,7 +34,6 @@ router.post('/add', verifyToken, (req, res) => {
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
         else {
-          console.log('result', result);
           res.json({ message: 'created' });
         }
       });
@@ -47,19 +42,15 @@ router.post('/add', verifyToken, (req, res) => {
 });
 
 router.get('/get-all', verifyToken, (req, res) => {
-  console.log('body', req.body);
-
   jwt.verify(req.token, config.secret, (err, authData) => {
     if (err) {
       console.log(err);
       res.json({ message: 'error' });
     } else {
-      console.log('auth', authData);
       const sql = `SELECT * from onRoad.Plans where userId=${authData.data.id}`;
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
         else {
-          console.log('result', result);
           res.json({ plans: result });
         }
       });
@@ -68,18 +59,14 @@ router.get('/get-all', verifyToken, (req, res) => {
 });
 
 router.get('/get-one-plan/:id', verifyToken, (req, res) => {
-  // console.log('body', req.body);
-
   jwt.verify(req.token, config.secret, (err, authData) => {
     if (err) {
       console.log(err);
       res.json({ message: 'error' });
     } else {
-      console.log('auth', authData);
       const sql = `SELECT * from onRoad.Plans where userId=${authData.data.id} and id = ${req.params.id}`;
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
-        console.log('result', result);
         res.json({ plans: result });
       });
     }
@@ -87,20 +74,15 @@ router.get('/get-one-plan/:id', verifyToken, (req, res) => {
 });
 
 router.delete('/:id', verifyToken, (req, res) => {
-  console.log('params', req.params);
-
   jwt.verify(req.token, config.secret, (err, authData) => {
     if (err) {
       console.log(err);
       res.json({ message: 'error' });
     } else {
-      console.log('auth', authData);
-      console.log(req.params);
       const sql = `DELETE FROM Plans WHERE id = ${req.params.id} AND userId=${authData.data.id} `;
       const query = db.query(sql, (err, result) => {
         if (err) console.log(err);
         else {
-          console.log('result', result);
           res.json({ notes: result });
         }
       });

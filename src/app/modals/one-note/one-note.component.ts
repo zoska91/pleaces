@@ -42,8 +42,6 @@ export class OneNoteComponent implements OnInit {
     this.noteId = id;
     this.notes.getOneNote(id).subscribe(resp => {
       this.oneNote = resp.notes[0];
-      // console.log(resp);
-      console.log(this.oneNote);
       this.editNoteForm = this.createEditNoteForm();
       this.toggle.emit();
     });

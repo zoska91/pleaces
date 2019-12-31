@@ -40,33 +40,4 @@ app.use('/api/notes', notesRouter);
 app.use('/api/plans', plansRouter);
 app.use('/api/history', historyRouter);
 
-// app.post('/api/posts', verifyToken, (req, res) => {
-//   jwt.verify(req.token, 'secret', (err, authData) => {
-//     if (err) {
-//       res.json({ message: 'error' });
-//     } else {
-//       res.json({
-//         message: 'Post created...',
-//         authData
-//       });
-//     }
-//   });
-// });
-
-// app.post('/api/login', (req, res) => {
-//   const user = {
-//     id: 1,
-//     username: 'zoo',
-//     email: 'zoska91@wp.pl'
-//   };
-
-//   jwt.sign({ user }, 'secret', (err, token) => {
-//     res.json({
-//       token
-//     });
-//   });
-// });
-
-//format od token
-
 app.listen(8080, () => console.log('server on port 8080'));
